@@ -1,11 +1,10 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Form,FormControl,FormDescription,FormField,FormItem,FormLabel,FormMessage, } from "@/components/ui/form"
-import { User } from "@/type/user"
 
-export default function SignUpForm(  { viewModel } : any) {
+export default function SignUpForm(  { viewModal } : any) {
 
-const { form, onChange, onSubmit } = viewModel
+const { form, onChange, onSubmit } = viewModal
 
  return (
   <div className="flex items-center justify-center h-screen bg-white w-full">
