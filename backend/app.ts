@@ -4,6 +4,7 @@ const port = 4000
 const cors = require('cors')
 
 const signupRouter = require('./routes/signup');
+const loginRouter = require('./routes/login');
 
 app.use(cors()); // 프론트에서 요청 허용
 app.use(express.json()); // JSON 바디 파싱
@@ -11,6 +12,7 @@ app.use(express.urlencoded({ extended: true })); // 폼데이터 바디 파싱
 
 
 app.use('/api', signupRouter);
+app.use('/api', loginRouter);
 
 // app.post('/', (req : any, res : any) => {
 //   console.log("요청:", req.body)

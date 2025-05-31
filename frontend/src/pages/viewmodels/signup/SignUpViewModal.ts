@@ -2,9 +2,17 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { signUpApi } from "@/pages/models/signUpModal"
+import { User } from "@/type/user"
 
-export function SignUpViewModel() {
-  
+const defaultValues: User = {
+  username: "",
+  email: "",
+  password: "",
+  confirm: "",
+};
+
+export function SignUpViewModal() {
+
   const formSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
@@ -25,12 +33,7 @@ export function SignUpViewModel() {
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      username: "",
-      email: "",
-      password: "",
-      confirm: "",
-    },
+    defaultValues,
   });
 
   const onChange = (e : any) => {
@@ -38,8 +41,7 @@ export function SignUpViewModel() {
       form.setValue(name, value); // RHF 방식으로 값 설정 
   }
   
-  const onSubmit = async (data: any) => {
-    //modal로 전달해야함 
+  const onSubmit = async (data: User) => {
     await signUpApi(data)
       .then(response => {
         console.log("회원가입 성공:", response);
