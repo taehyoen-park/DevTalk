@@ -6,7 +6,8 @@ export async function signUpApi(form: any) {
     method: 'POST',
     body: JSON.stringify(form),
     headers: { 'Content-Type': 'application/json' },
-    })
+
+})
     
 
     return res.json()
