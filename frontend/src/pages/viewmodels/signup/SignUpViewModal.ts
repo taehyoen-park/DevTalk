@@ -11,7 +11,7 @@ const defaultValues: User = {
   confirm: "",
 };
 
-export function SignUpViewModel() {
+export function SignUpViewModal() {
 
   const formSchema = z.object({
   username: z.string().min(2, {
@@ -42,7 +42,6 @@ export function SignUpViewModel() {
   }
   
   const onSubmit = async (data: User) => {
-    //modal로 전달해야함 
     await signUpApi(data)
       .then(response => {
         console.log("회원가입 성공:", response);

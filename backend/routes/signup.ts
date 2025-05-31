@@ -19,20 +19,16 @@ router.post('/signup', async (req : any, res : any) => {
 
   const hashedPassword = await bcrypt.hash(req.body.password, 10); // saltRounds = 10
   const data = req.body;
-    try {
+  try {
     const result = await pool.query(
       'INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *',
-      [data.username, data.email,  hashedPassword ]
-    );
-
-    res.status(201).json(result.rows[0]);
-  } catch (err) {
+      [data.username, data.email, hashedPassword ]);
+      res.status(201).json(result.rows[0]);
+  } 
+  catch (err) {
     console.error(err);
     res.status(500).send('DB 오류 발생');
   }
-
-
-  // res.json({ message: "요청 성공", data: req.body })
 })
 
 module.exports = router;
