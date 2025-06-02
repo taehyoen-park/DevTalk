@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import PostForm from '../views/post/PostsForm'
 import { PostsViewModel } from "../viewmodels/post/PostsViewModel"
+import { postInterface } from '@/type/postInterface';
+
+type postWithTimeAgo = postInterface & { timeAgo: string };
 
 function timeAgo(dateStr: string): string {
     const diff = Math.floor((Date.now() - new Date(dateStr).getTime()) / 1000);
@@ -15,12 +18,12 @@ function timeAgo(dateStr: string): string {
 
 export default function PostPage() {
 
-    const [postViewModel, setPostViewModal] = useState<any>(null);
+    const [postViewModel, setPostViewModal] = useState<postWithTimeAgo[] | null>(null);
 
     useEffect(() => {
             const fetchData = async () => {
             const result = await PostsViewModel();
-            const postsWithTimeAgo = result.map((post: any) => ({
+            const postsWithTimeAgo = result.map((post: postWithTimeAgo) => ({
                 ...post,
                 timeAgo: timeAgo(post.time),
             }));
@@ -30,10 +33,11 @@ export default function PostPage() {
         fetchData();
     }, []);
 
+
     if (!postViewModel) return <div>Loading...</div>; // 로딩 상태 처리
     if (postViewModel.length === 0) return <div>No posts available</div>; // 게시글이 없을 때 처리
     return (
-        <PostForm posts={postViewModel} />
+        <PostForm viewModel={postViewModel} />
         // <div></div>
     );
 }

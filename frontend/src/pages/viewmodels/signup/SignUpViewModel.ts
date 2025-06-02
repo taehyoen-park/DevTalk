@@ -2,14 +2,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { signUpApi } from "@/pages/models/signUpModel"
-import { User } from "@/type/user"
+import { signUpInterface } from "@/type/signUpInterface"
 
-const defaultValues: User = {
-  username: "",
-  email: "",
-  password: "",
-  confirm: "",
-};
 
 export function SignUpViewModel() {
 
@@ -33,7 +27,12 @@ export function SignUpViewModel() {
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues,
+    defaultValues :{
+      username: "",
+      email: "",
+      password: "",
+      confirm: "",
+    },
   });
 
   const onChange = (e : any) => {
@@ -41,7 +40,7 @@ export function SignUpViewModel() {
       form.setValue(name, value); // RHF 방식으로 값 설정 
   }
   
-  const onSubmit = async (data: User) => {
+  const onSubmit = async (data: signUpInterface) => {
     await signUpApi(data)
       .then(response => {
         console.log("회원가입 성공:", response);
@@ -51,5 +50,5 @@ export function SignUpViewModel() {
       });
   }
 
-  return { form, onSubmit, onChange }
+  return { form, onSubmit, onChange };
 }

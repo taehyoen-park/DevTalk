@@ -5,7 +5,7 @@ import { SignUpViewModel } from "../viewmodels/signup/SignUpViewModel";
 export default function SignUpPage() {
     const signUpViewModel = SignUpViewModel();
     return (
-        <SignUpForm viewModal={signUpViewModel} />
+        <SignUpForm viewModel={signUpViewModel} />
         // <div></div>
     );
 }

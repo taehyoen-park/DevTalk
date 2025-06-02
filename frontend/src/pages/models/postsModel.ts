@@ -7,7 +7,8 @@ export async function postsApi() {
     });
 
     if (!res.ok) {
-        throw new Error('Failed to fetch posts');
+  
+        throw new Error('postsAPI:Failed to fetch posts');
     }
 
     if (res.status === 204) {

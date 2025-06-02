@@ -6,7 +6,7 @@ export async function PostsViewModel() {
     const posts = await postsApi();
   
     if (!posts) {
-        throw new Error('Failed to fetch posts');
+        throw new Error('PostsViewModel:Failed to fetch posts');
     }
 
     if (posts.length === 0) {
@@ -14,6 +14,6 @@ export async function PostsViewModel() {
         return [];
     }
 
-    console.log("PostsViewModal posts:", posts);
+    // console.log("PostsViewModal posts:", posts);
     return posts ;
 }

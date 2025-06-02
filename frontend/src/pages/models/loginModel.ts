@@ -1,7 +1,7 @@
-
+import { loginInterface } from "@/type/loginInterface"
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export async function loginApi(form: any) {
+export async function loginApi(form: loginInterface) {
 
     const res = await fetch(`${BASE_URL}/api/login`, {
         method: 'POST',
