@@ -9,9 +9,12 @@ export async function postsApi() {
     if (!res.ok) {
         throw new Error('Failed to fetch posts');
     }
-    console.log("jason으로 바꾸기전 데이터 res:", res);
-    const json = await res.json(); // 여기서 실제 데이터를 꺼냄
 
+    if (res.status === 204) {
+        return [];
+    }
 
-    return json.posts;
+    const json = await res.json(); 
+    
+    return json.posts
 }

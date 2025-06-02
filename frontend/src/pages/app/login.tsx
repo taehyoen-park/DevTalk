@@ -1,10 +1,10 @@
 import LoginUpForm from "../views/login/LoginForm";
-import { LoginViewModal } from "../viewmodels/login/LoginViewModal";
+import { LoginViewModel } from "../viewmodels/login/LoginViewModel";
 
 export default function LoginPage(){
 
-    const loginViewModal= LoginViewModal();
+    const loginViewModel= LoginViewModel();
     return (
-        <LoginUpForm viewModal={loginViewModal} />
+        <LoginUpForm viewModal={loginViewModel} />
     );  
 }

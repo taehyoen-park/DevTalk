@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form"
-import { loginApi } from "@/pages/models/loginModal"
+import { loginApi } from "@/pages/models/loginModel"
 import { useRouter } from 'next/router';
 
-export function LoginViewModal() {
+export function LoginViewModel() {
     const router = useRouter();
     const form = useForm<{email:string , password:string}>({
        defaultValues: {

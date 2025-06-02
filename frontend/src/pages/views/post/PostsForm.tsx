@@ -2,28 +2,29 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-export default function PostForm({ viewModal }: { viewModal: any }) {
-    const { posts } = viewModal;
-    console.log("posts:", posts);
+export default function PostForm(postsViewModal: any) {
+    const  posts  = postsViewModal.posts;
+
     return(
         <div className="space-y-4 min-h-screen max-w-2xl mx-auto p-4 pt-32">
             {posts.map((p: any) => (
-            <Card key={p.userid}>
-                <CardContent className="space-y-2">
-                <div className="text-xl font-semibold">{p.title}</div>
-                <p className="text-gray-600 text-sm">{p.content}</p>
-                <div className="flex items-center justify-between">
-                    <div className="flex gap-2">
-                    {/* {q.tags.map((tag) => (
-                        <Badge key={tag}>{tag}</Badge>
-                    ))} */}
-                    </div>
-                    <Button variant="link" className="text-sm" >
-                    자세히 보기
-                    </Button>
-                </div>
-                </CardContent>
-            </Card>
+                <Card key={p.userid} className="hover:shadow-lg transition-shadow duration-200 border border-gray-200">
+                    <CardContent className="space-y-2">
+                        <div className="text-xl font-semibold text-ellipsis cursor-pointer">{p.title}</div>
+                        <p className="text-gray-600 text-sm overflow-hidden text-ellipsis whitespace-nowrap">{p.content}</p>
+                        <div className="flex items-center justify-between">
+                            <div className="flex gap-2">
+                                {p.tags.map((tag: any) => (
+                                    <Badge key={tag} className="bg-gray-200 font-semibold cursor-pointer">{tag}</Badge>
+                                ))}
+                            </div>
+                            <div className="text-gray-500 text-sm">
+                                {p.timeAgo}
+                            </div>
+                    
+                        </div>
+                    </CardContent>
+                </Card>
             ))}
         </div>
     )

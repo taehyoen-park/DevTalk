@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { useForm } from "react-hook-form"
-import { signUpApi } from "@/pages/models/signUpModal"
+import { signUpApi } from "@/pages/models/signUpModel"
 import { User } from "@/type/user"
 
 const defaultValues: User = {
@@ -11,7 +11,7 @@ const defaultValues: User = {
   confirm: "",
 };
 
-export function SignUpViewModal() {
+export function SignUpViewModel() {
 
   const formSchema = z.object({
   username: z.string().min(2, {
@@ -27,7 +27,7 @@ export function SignUpViewModal() {
     message: "Confirm password must be at least 6 characters.",
   })
   }).refine((data) => data.password === data.confirm, {
-      path: ["confirm"], // 에러가 어디에 표시될지
+      path: ["confirm"],
       message: "Passwords do not match.",
     })
   

@@ -1,16 +1,19 @@
-import { postsApi } from '@/pages/models/postsModal';
+import { postsApi } from '@/pages/models/postsModel';
 
 
-export async function PostsViewModal() {
+export async function PostsViewModel() {
     
     const posts = await postsApi();
+  
     if (!posts) {
         throw new Error('Failed to fetch posts');
     }
+
     if (posts.length === 0) {
         console.warn('No posts found');
         return [];
     }
-    
-    return { posts };
+
+    console.log("PostsViewModal posts:", posts);
+    return posts ;
 }

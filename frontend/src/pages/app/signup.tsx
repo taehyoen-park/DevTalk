@@ -1,11 +1,11 @@
 import SignUpForm from "../views/signup/SignUpForm";
-import { SignUpViewModal } from "../viewmodels/signup/SignUpViewModal";
+import { SignUpViewModel } from "../viewmodels/signup/SignUpViewModel";
 
 
 export default function SignUpPage() {
-    const signUpViewModal = SignUpViewModal();
+    const signUpViewModel = SignUpViewModel();
     return (
-        <SignUpForm viewModal={signUpViewModal} />
+        <SignUpForm viewModal={signUpViewModel} />
         // <div></div>
     );
 }
