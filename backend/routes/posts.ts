@@ -1,8 +1,8 @@
 import express from 'express'
 import fs from 'fs';
 import path from 'path';
+import pool from '../db';
 
-const pool = require('../db');
 const router = express.Router();
 
 router.get('/posts', async (req : any, res : any) => {
@@ -26,4 +26,4 @@ router.get('/posts', async (req : any, res : any) => {
 
 })
 
-module.exports = router;
+export default router;

@@ -1,7 +1,8 @@
 import express from 'express'
-// import bcrypt from 'bcrypt';
-const bcrypt = require('bcrypt');
-const pool = require('../db');
+import { compare } from '../utils/bcrypt'
+import { generateAccessToken, generateRefreshToken } from '../utils/jwt'
+import pool from '../db';
+import redis from '../config/redis';
 const router = express.Router();
 
 router.post('/login', async (req : any, res : any) => {
@@ -14,6 +15,7 @@ router.post('/login', async (req : any, res : any) => {
         return res.status(400).json({ message: '비밀번호가 필요합니다' });
     }
 
+
     const data = req.body;
     const result = await pool.query(
         'SELECT * FROM users WHERE email = $1',
@@ -23,9 +25,19 @@ router.post('/login', async (req : any, res : any) => {
         return res.status(401).json({ message: '존재하지 않는 사용자입니다.' });
     }
 
-    
     const user = result.rows[0];
-    const isPasswordCorrect = await bcrypt.compare(data.password, user.password);
+    const accessToken = generateAccessToken(user.userid);
+    const refreshToken = generateRefreshToken(user.userid);
+
+    await redis.set(`refresh:${user.userid}`, refreshToken);
+    res.cookie('accessToken', accessToken, {
+        httpOnly: true,
+        secure: false,    // HTTPS 환경에서만 전송
+        sameSite: 'strict',
+        maxAge: 1000 * 60 * 15,  // 15분
+    });
+    
+    const isPasswordCorrect = await compare(data.password, user.password);
     if (!isPasswordCorrect) {
         console.log("비밀번호 불일치:", user);
         res.status(401).json({ message: '비밀번호가 일치하지 않습니다.', isPasswordCorrect });
@@ -38,4 +50,4 @@ router.post('/login', async (req : any, res : any) => {
 
 })
 
-module.exports = router;
+export default router;

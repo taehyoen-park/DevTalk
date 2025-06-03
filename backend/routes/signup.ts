@@ -1,7 +1,6 @@
 import express from 'express'
-// import bcrypt from 'bcrypt';
-const bcrypt = require('bcrypt');
-const pool = require('../db');
+import bcrypt from 'bcrypt';
+import pool from '../db'; // Assuming you have a db.js file that exports the pool
 const router = express.Router();
 
 router.post('/signup', async (req : any, res : any) => {
@@ -31,4 +30,4 @@ router.post('/signup', async (req : any, res : any) => {
   }
 })
 
-module.exports = router;
+export default router;

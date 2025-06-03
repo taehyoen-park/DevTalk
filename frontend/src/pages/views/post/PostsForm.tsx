@@ -13,6 +13,9 @@ export default function PostForm( {viewModel} : PostFormProps) {
 
     return(
         <div className="space-y-4 min-h-screen max-w-2xl mx-auto p-4 pt-32">
+            <Button className="mb-4" variant="outline" onClick={() => window.location.href = './app/newpost'}>
+                Create New Post 
+            </Button>
             {posts.map((p: postWithTimeAgo) => (
                 <Card key={p.postid} className="hover:shadow-lg transition-shadow duration-200 border border-gray-200">
                     <CardContent className="space-y-2">

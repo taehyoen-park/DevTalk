@@ -7,6 +7,7 @@ export async function loginApi(form: loginInterface) {
         method: 'POST',
         body: JSON.stringify(form),
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include', 
     })
 
     return res.json();

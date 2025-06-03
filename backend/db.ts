@@ -11,5 +11,5 @@ const pool = new Pool({
   port: 5432, // 기본 포트
 });
 
-module.exports = pool;
+export default pool;
 
