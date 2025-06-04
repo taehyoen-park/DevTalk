@@ -15,7 +15,6 @@ router.post('/login', async (req : any, res : any) => {
         return res.status(400).json({ message: '비밀번호가 필요합니다' });
     }
 
-
     const data = req.body;
     const result = await pool.query(
         'SELECT * FROM users WHERE email = $1',
@@ -39,11 +38,11 @@ router.post('/login', async (req : any, res : any) => {
     
     const isPasswordCorrect = await compare(data.password, user.password);
     if (!isPasswordCorrect) {
-        console.log("비밀번호 불일치:", user);
+        //sconsole.log("비밀번호 불일치:", user);
         res.status(401).json({ message: '비밀번호가 일치하지 않습니다.', isPasswordCorrect });
     }
     else {
-        console.log("로그인 성공:", user);
+        //console.log("로그인 성공:", user);
         res.status(200).json({ message: '로그인 성공', user });
     }
    

@@ -2,19 +2,20 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { postInterface } from "@/type/postInterface";
+import { useRouter } from 'next/router';
 
 type postWithTimeAgo = postInterface & { timeAgo: string };
 interface PostFormProps {
-  viewModel: postWithTimeAgo[];
+    viewModel: postWithTimeAgo[];
 }
-export default function PostForm( {viewModel} : PostFormProps) {
-
+export default function PostForm({ viewModel }: PostFormProps) {
+    const router = useRouter();
     const posts = viewModel;
 
-    return(
+    return (
         <div className="space-y-4 min-h-screen max-w-2xl mx-auto p-4 pt-32">
-            <Button className="mb-4" variant="outline" onClick={() => window.location.href = './app/newpost'}>
-                Create New Post 
+            <Button className="mb-4" variant="outline" onClick={() => router.push('/app/newpost')}>
+                Create New Post
             </Button>
             {posts.map((p: postWithTimeAgo) => (
                 <Card key={p.postid} className="hover:shadow-lg transition-shadow duration-200 border border-gray-200">
@@ -30,7 +31,7 @@ export default function PostForm( {viewModel} : PostFormProps) {
                             <div className="text-gray-500 text-sm">
                                 {p.timeAgo}
                             </div>
-                    
+
                         </div>
                     </CardContent>
                 </Card>

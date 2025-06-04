@@ -1,6 +1,4 @@
 import express from 'express'
-import fs from 'fs';
-import path from 'path';
 import pool from '../db';
 import {getNowTime} from '../utils/time';
 const router = express.Router();
@@ -18,7 +16,6 @@ router.post('/newpost', async (req: any, res: any) => {
     const postQuery = `INSERT INTO post ( userid, title, content, time) VALUES ( $1, $2, $3, $4 ) RETURNING postid;`
 
     const placeholders = tags.map((_:string, i:number) => `($${i + 1})`).join(', ');
-    //console .log("placeholders", placeholders, tags)
     const tagQuery = `INSERT INTO tags (tagname) VALUES ${placeholders} ON CONFLICT (tagname) DO NOTHING;`;
 
     const posts_tagsQuery = `INSERT INTO posts_tags (postid, tagid) SELECT ($1) ,tagid FROM tags WHERE tags.tagname = ANY($2);`;

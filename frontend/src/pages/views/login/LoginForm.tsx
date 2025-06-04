@@ -6,7 +6,7 @@ export default function LoginForm({ viewModal }: { viewModal : ReturnType<typeof
   const { form, onChange, onSubmit } = viewModal 
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen w-full bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         <form onSubmit={form.handleSubmit(onSubmit)}>
