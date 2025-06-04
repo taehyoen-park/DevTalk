@@ -1,5 +1,5 @@
-import SignUpForm from "../views/signup/SignUpForm";
-import { SignUpViewModel } from "../viewmodels/signup/SignUpViewModel";
+import SignUpForm from "./SignUpForm";
+import { SignUpViewModel } from "./SignUpViewModel";
 
 
 export default function SignUpPage() {

@@ -3,7 +3,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function newPostApi(form: newPostInterface) {
     
-    const res = await fetch(`${BASE_URL}/api/newpost`, {
+    const res = await fetch(`${BASE_URL}/api/ask`, {
         method: 'POST',
         body: JSON.stringify(form),
         headers: { 'Content-Type': 'application/json' },

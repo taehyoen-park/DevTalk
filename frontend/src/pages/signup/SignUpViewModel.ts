@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { useForm } from "react-hook-form"
-import { signUpApi } from "@/pages/models/signUpModel"
+import { signUpApi } from "@/pages/signup/signUpModel"
 import { signUpInterface } from "@/type/signUpInterface"
 
 

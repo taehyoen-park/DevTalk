@@ -23,7 +23,7 @@ const items = [
   },
   {
     title: "Posts",
-    url: "/app/posts",
+    url: "/posts",
     icon: MessageSquare,
   },
   {

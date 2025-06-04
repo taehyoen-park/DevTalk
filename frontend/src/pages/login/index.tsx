@@ -1,5 +1,5 @@
-import LoginUpForm from "../views/login/LoginForm";
-import { LoginViewModel } from "../viewmodels/login/LoginViewModel";
+import LoginUpForm from "./LoginForm";
+import { LoginViewModel } from "./LoginViewModel";
 
 export default function LoginPage(){
 

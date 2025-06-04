@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { LoginViewModel } from '@/pages/viewmodels/login/LoginViewModel';
+import { LoginViewModel } from '@/pages/login/LoginViewModel';
 
 export default function LoginForm({ viewModal }: { viewModal : ReturnType<typeof LoginViewModel> }) {
   const { register } = useForm();

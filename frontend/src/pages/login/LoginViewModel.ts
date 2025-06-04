@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import { loginApi } from "@/pages/models/loginModel"
+import { loginApi } from "@/pages/login/loginModel"
 import { useRouter } from 'next/router';
 import { loginInterface } from "@/type/loginInterface";
 

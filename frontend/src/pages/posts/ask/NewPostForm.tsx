@@ -2,14 +2,14 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge";
-import { NewPostViewModel } from "@/pages/viewmodels/post/NewPostViewModel";
+import { NewPostViewModel } from "@/pages/posts/ask/NewPostViewModel";
 import { newPostInterface } from "@/type/newPostInterface";
 
 export function NewPostForm({ viewModel }: { viewModel: ReturnType<typeof NewPostViewModel> }) {
 
     const { form, onChange, onSubmit, onTagInputChange, inputValue, tags } = viewModel;
     return (
-        <div className="space-y-4 min-h-screen max-w-2xl mx-auto p-4 pt-32">
+        <div className="flex flex-row items-center justify-center min-h-screen w-full bg-[black]">
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 max-w-lg w-full border p-8 rounded-lg shadow-lg bg-white">
 

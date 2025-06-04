@@ -9,8 +9,10 @@ export default function App({ Component, pageProps }: AppProps) {
     <div>
       {/* <Header />   */}
       {/* <div className="flex flex-row items-center justify-start min-h-screen pt-16"></div> */}
-        <Layout>   
+        
+        <Layout>
           <Component {...pageProps}/>
+          
         </Layout>
       
       {/* <Footer/> */}

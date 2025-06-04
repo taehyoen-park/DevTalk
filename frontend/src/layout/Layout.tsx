@@ -10,7 +10,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   return (
 
-    <SidebarProvider className="flex flex-col items-center justify-start min-h-screen bg-white" open={isSidebarOpen} 
+    <SidebarProvider className="flex flex-col items-center justify-start min-h-screen" open={isSidebarOpen} 
                     onOpenChange={(open) => {setIsSidebarOpen(open)}}>
                       
         <Header>
@@ -19,7 +19,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
         <div className="flex flex-row items-start justify-start w-full min-h-screen">
           {isSidebarOpen && <aside className={`w-64 min-h-screen`}/>}
-          <div className={`flex-1 transition-all duration-400 min-h-screen mt-20`}>{children}</div>
+          <div className={`flex-1 transition-all duration-400 min-h-screen bg-[white] mt-16`}>{children}</div>
         </div>
 
         <Footer />

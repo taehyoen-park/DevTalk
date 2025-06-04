@@ -2,7 +2,8 @@ import express from 'express'
 import signupRouter from './routes/signup';
 import loginRouter from './routes/login';
 import postsRouter from './routes/posts';
-import newpostRouter from './routes/newpost';
+import newpostRouter from './routes/ask';
+import postRouter from './routes/post'
 import cookieParser from 'cookie-parser';
 import { requireAuth } from './middleware/requireAuth';
 import cors from 'cors';
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: true })); // 폼데이터 바디 파싱
 app.use('/api', signupRouter);
 app.use('/api', loginRouter);
 app.use('/api', postsRouter);
+app.use('/api',postRouter);
 app.use('/api', requireAuth, newpostRouter); // 인증 미들웨어 적용
 
 app.listen(port, () => {

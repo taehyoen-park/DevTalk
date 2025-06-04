@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import { newPostApi } from '@/pages/models/newPostModel';
+import { newPostApi } from '@/pages/posts/ask/newPostModel';
 import { newPostInterface } from '@/type/newPostInterface';
 
 export function NewPostViewModel() {

@@ -1,4 +1,4 @@
-import { postsApi } from '@/pages/models/postsModel';
+import { postsApi } from './postsModel';
 
 
 export async function PostsViewModel() {

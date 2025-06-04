@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { SignUpViewModel } from "../../viewmodels/signup/SignUpViewModel";
+import { SignUpViewModel } from "./SignUpViewModel";
 import { Form,FormControl,FormDescription,FormField,FormItem,FormLabel,FormMessage, } from "@/components/ui/form"
 
 export default function SignUpForm( {viewModel} : { viewModel: ReturnType<typeof SignUpViewModel> }  ) {

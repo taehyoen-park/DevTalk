@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import PostForm from '../views/post/PostsForm'
-import { PostsViewModel } from "../viewmodels/post/PostsViewModel"
+import PostForm from './postsForm'
+import { PostsViewModel } from "./postsViewModel"
 import { postInterface } from '@/type/postInterface';
 
 type postWithTimeAgo = postInterface & { timeAgo: string };
@@ -37,7 +37,11 @@ export default function PostPage() {
     if (!postViewModel) return <div>Loading...</div>; // 로딩 상태 처리
     if (postViewModel.length === 0) return <div>No posts available</div>; // 게시글이 없을 때 처리
     return (
-        <PostForm viewModel={postViewModel} />
+        <div className='bg-[white]'>
+
+            <PostForm viewModel={postViewModel} />
+        </div>
+        
         // <div></div>
     );
 }
