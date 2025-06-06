@@ -30,7 +30,8 @@ export function NewPostViewModel() {
       setTags(updatedTags);
       form.setValue('tags',updatedTags);
       setInputValue(parts[parts.length - 1]);
-    } else {
+    } 
+    else {
       setInputValue(value);
     }
   }

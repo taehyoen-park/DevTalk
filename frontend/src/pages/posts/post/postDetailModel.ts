@@ -1,8 +1,10 @@
+import { useParams } from 'next/navigation'
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export async function postDetailApi() {
-
-    const res = await fetch(`${BASE_URL}/api/post`, {
+export async function postDetailApi(params:any) 
+{
+    // console.log(params);
+    const res = await fetch(`${BASE_URL}/api/post/${params.id}`, {
         method: 'GET',
         // body: JSON.stringify(),
         headers: { 'Content-Type': 'application/json' },
